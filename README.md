@@ -64,4 +64,4 @@ Note: Detailed instructions and code usage can be found within the project's cod
 
 
 ## Acknowledgement
-![Jan Williams](https://github.com/Jan-Williams/pyshred)
+-[Jan Williams](https://github.com/Jan-Williams/pyshred)
