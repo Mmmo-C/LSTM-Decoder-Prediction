@@ -28,12 +28,24 @@ The project includes example code and data for training the sea-surface temperat
 
 1. Data Preparation:
    - Load the sea-surface temperature data.
-   - Preprocess the data if necessary, such as normalization or splitting into training and testing sets.
+   - Splitting data into training and testing sets.
 
 2. Model Training:
    - Set up the LSTM/decoder architecture as defined in the code.
+   ```ruby
+   # Generate input sequences to a SHRED model
+   all_data_in = np.zeros((n - lags, lags, num_sensors))
+   for i in range(len(all_data_in)):
+      all_data_in[i] = transformed_X[i:i+lags, sensor_locations]
+
+   device = 'cuda' if torch.cuda.is_available() else 'cpu'
+   ```
    - Train the model using the prepared training data.
    - Optimize the model's hyperparameters to improve performance if needed.
+   ```ruby
+   shred = models.SHRED(num_sensors, m, hidden_size=64, hidden_layers=2, l1=350, l2=400, dropout=0.1).to(device)
+   validation_errors = models.fit(shred, train_dataset, valid_dataset, batch_size=64, num_epochs=1000, lr=1e-3, verbose=True, patience=5)
+   ```
 
 3. Model Evaluation:
    - Evaluate the trained model on the testing data.
@@ -55,13 +67,24 @@ The project includes example code and data for training the sea-surface temperat
      - Train and evaluate the model with different numbers of sensors.
      - Analyze the model's performance as a function of the number of sensors.
 
-Note: Detailed instructions and code usage can be found within the project's codebase.
 
 ## Computational Results
+The mean square error of the model is: 0.019992424
 
+Comparing the predicted results with the original data set, we can visualized the temperature map as:
+![map]()
+
+The performance of the algorithm based on the time lag can be shown as:
+![tl]()
+
+The performance of the algorithm based on noise level can be shown as:
+![nl]()
+
+The performance of the algorithm based on the number of sensors can be shown as:
+![nv]()
 
 ## Summary and Conclusions
-
+By performing all analysis, we can found that each variable has its own advantage range. To increase the overall performance of the LSTM predictor, we need to consider combining different cases to have the best set of variables. 
 
 ## Acknowledgement
 -[Jan Williams](https://github.com/Jan-Williams/pyshred)
