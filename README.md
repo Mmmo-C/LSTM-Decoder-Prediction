@@ -72,16 +72,16 @@ The project includes example code and data for training the sea-surface temperat
 The mean square error of the model is: 0.019992424
 
 Comparing the predicted results with the original data set, we can visualized the temperature map as:
-![map]()
+![map](https://github.com/Mmmo-C/LSTM-Decoder-Prediction/blob/main/results/1.png)
 
 The performance of the algorithm based on the time lag can be shown as:
-![tl]()
+![tl](https://github.com/Mmmo-C/LSTM-Decoder-Prediction/blob/main/results/tl.png)
 
 The performance of the algorithm based on noise level can be shown as:
-![nl]()
+![nl](https://github.com/Mmmo-C/LSTM-Decoder-Prediction/blob/main/results/nl.png)
 
 The performance of the algorithm based on the number of sensors can be shown as:
-![nv]()
+![nv](https://github.com/Mmmo-C/LSTM-Decoder-Prediction/blob/main/results/sv.png)
 
 ## Summary and Conclusions
 By performing all analysis, we can found that each variable has its own advantage range. To increase the overall performance of the LSTM predictor, we need to consider combining different cases to have the best set of variables. 
